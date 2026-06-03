@@ -197,7 +197,10 @@ export default defineConfig((/* ctx */) => {
         appId: 'quasar-project',
       },
     },
-
+    rules: {
+    
+    'vue/multi-word-component-names': 'off'
+    },
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-browser-extensions/configuring-bex
     bex: {
       // extendBexScriptsConf (esbuildConf) {},

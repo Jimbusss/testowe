@@ -3,18 +3,21 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title> Quasar App </q-toolbar-title>
-
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+        <q-item-label header> Nawigacja </q-item-label>
 
-        <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
+        <EssentialLink 
+          v-for="link in linksList" 
+          :key="link.title" 
+          v-bind="link" 
+          :to="link.to"
+        />
       </q-list>
     </q-drawer>
 
@@ -26,51 +29,46 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import EssentialLink, { type EssentialLinkProps } from 'components/EssentialLink.vue';
+import EssentialLink from 'src/components/EssentialLink.vue';
 
-const linksList: EssentialLinkProps[] = [
+const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
+    title: 'Mapa',
+    caption: 'Przeglądaj mapę i poligony',
+    icon: 'map',
+    to: '/',
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
+    title: 'Formularz',
+    caption: 'Zarządzaj lokalizacjami',
+    icon: 'location_city',
+    to: '/Formularz1',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
+    title: 'Ustawienia',
+    caption: 'Konfiguracja aplikacji',
+    icon: 'settings',
+    to: '/ustawienia',
   },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
+    {
+    title: 'Podstrona1',
+    caption: 'Konfiguracja aplikacji',
+    icon: 'settings',
+    to: '/ustawienia',
   },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
+    {
+    title: 'Podstrona2',
+    caption: 'Konfiguracja aplikacji',
+    icon: 'settings',
+    to: '/ustawienia',
   },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
+    {
+    title: 'Podstrona3',
+    caption: 'Konfiguracja aplikacji',
+    icon: 'settings',
+    to: '/ustawienia',
   },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
+  
 ];
 
 const leftDrawerOpen = ref(false);

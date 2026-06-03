@@ -1,12 +1,19 @@
 <template>
-  <q-item clickable tag="a" target="_blank" :href="link">
-    <q-item-section v-if="icon" avatar>
-      <q-icon :name="icon" />
+  <q-item
+    clickable
+    tag="router-link"
+    :to="props.to"
+  >
+    <q-item-section
+      v-if="props.icon"
+      avatar
+    >
+      <q-icon :name="props.icon" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label>{{ props.title }}</q-item-label>
+      <q-item-label caption>{{ props.caption }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -15,13 +22,13 @@
 export interface EssentialLinkProps {
   title: string;
   caption?: string;
-  link?: string;
+  to?: string; 
   icon?: string;
 }
 
-withDefaults(defineProps<EssentialLinkProps>(), {
+const props = withDefaults(defineProps<EssentialLinkProps>(), {
   caption: '',
-  link: '#',
+  to: '#',
   icon: '',
 });
 </script>
