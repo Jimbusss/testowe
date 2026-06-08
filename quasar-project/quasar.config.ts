@@ -98,7 +98,10 @@ export default defineConfig((/* ctx */) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: [
+        'Notify' // <--- TUTAJ ZOSTAŁ DODANY PLUGIN NOTIFY
+      ],
+      
     },
 
     // animations: 'all', // --- includes all animations
@@ -214,6 +217,7 @@ export default defineConfig((/* ctx */) => {
        *
        * @example [ 'my-script.ts', 'sub-folder/my-other-script.js' ]
        */
+      
       extraScripts: [],
     },
   };

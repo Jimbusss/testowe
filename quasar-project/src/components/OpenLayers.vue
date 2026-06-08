@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-pa-md" style="max-width: 300px">
+    <div class="q-pa-md" style="max-width: 300px;">
       <q-select 
         v-model="cityName" 
         :options="opcjeMiast" 
@@ -11,14 +11,15 @@
     </div>
   </div>
 
+  
+  <div id="map" style="width: 100%; height: 500px; background-color: #ccc;"></div>
+  <q-btn @click="navigate"></q-btn>
   <button 
     @click="togglePolygon"
-    style="height: 50px; width: 100%; position: fixed; top: 0; left: 0; text-align: center; z-index: 9999;"
+    style="height: 50px; width: 100%; position: fixed; top: 50px; left: 0; text-align: center; z-index: 10;"
   >
     {{ widocznosc ? 'Ukryj poligon' : 'Pokaż poligon' }}
   </button>
-  <div id="map" style="width: 100%; height: 500px; background-color: #ccc;"></div>
-  <q-btn @click="navigate"></q-btn>
 </template>
 
 <script setup lang="ts">
@@ -88,7 +89,6 @@ const centerMapOnCity = async (targetCity: string) => {
   }
 }
 
-// Reagowanie na zmianę miasta z zewnątrz (np. z menu bocznego układu strony)
 watch(() => props.city, (newCity) => {
   if (newCity) {
     cityName.value = newCity

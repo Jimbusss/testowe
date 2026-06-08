@@ -5,11 +5,22 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      
-
-      { path: 'Formularz1', component: () => import('pages/FormularzDane.vue') }
+      { 
+        path: '', 
+        component: () => import('pages/IndexPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      { 
+        path: 'FormularzDane', 
+        component: () => import('pages/FormularzDane.vue'),
+        meta: { requiresAuth: true }
+      }
     ],
+  },
+  {
+    path: '/login',
+    name: 'login', // <-- TA LINIJKA NAPRAWIA BŁĄD Z KONSOLI
+    component: () => import('pages/LoginPage.vue')
   },
   {
     path: '/:catchAll(.*)*',

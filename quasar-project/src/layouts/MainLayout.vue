@@ -12,12 +12,21 @@
       <q-list>
         <q-item-label header> Nawigacja </q-item-label>
 
-        <EssentialLink 
-          v-for="link in linksList" 
-          :key="link.title" 
-          v-bind="link" 
+        <q-item
+          v-for="link in linksList"
+          :key="link.title"
+          clickable
           :to="link.to"
-        />
+        >
+          <q-item-section avatar>
+            <q-icon :name="link.icon" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{ link.title }}</q-item-label>
+            <q-item-label caption>{{ link.caption }}</q-item-label>
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -29,7 +38,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import EssentialLink from 'src/components/EssentialLink.vue';
 
 const linksList = [
   {
@@ -42,33 +50,32 @@ const linksList = [
     title: 'Formularz',
     caption: 'Zarządzaj lokalizacjami',
     icon: 'location_city',
-    to: '/Formularz1',
+    to: '/formularz', 
   },
   {
-    title: 'Ustawienia',
-    caption: 'Konfiguracja aplikacji',
-    icon: 'settings',
-    to: '/ustawienia',
+    title: 'Logowanie',
+    caption: 'Zaloguj sie tutaj',
+    icon: 'login',
+    to: '/login', 
   },
-    {
+  {
     title: 'Podstrona1',
     caption: 'Konfiguracja aplikacji',
     icon: 'settings',
     to: '/ustawienia',
   },
-    {
+  {
     title: 'Podstrona2',
     caption: 'Konfiguracja aplikacji',
     icon: 'settings',
     to: '/ustawienia',
   },
-    {
+  {
     title: 'Podstrona3',
     caption: 'Konfiguracja aplikacji',
     icon: 'settings',
     to: '/ustawienia',
   },
-  
 ];
 
 const leftDrawerOpen = ref(false);
